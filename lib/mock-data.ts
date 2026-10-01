@@ -1,4 +1,4 @@
-import { Post, StudentProfile } from "./types";
+import { Post, StudentProfile, Project, CollaborationRequest } from "./types";
 
 export const currentUserProfile: StudentProfile = {
   id: "prof-001",
@@ -203,5 +203,222 @@ export const initialPosts: Post[] = [
     createdAt: "2026-10-01T07:20:00Z",
     tags: ["Grants", "DOST", "StudentStartup", "Opportunity"],
     comments: [],
+  },
+];
+
+export const initialProjects: Project[] = [
+  {
+    id: "proj-1",
+    ownerId: "user-001",
+    owner: {
+      id: "user-001",
+      name: "Georgie Villar",
+      username: "georgiedev",
+      school: "Batangas State University - TNEU",
+      course: "BS Computer Science",
+    },
+    name: "Nex Community Platform",
+    description:
+      "A student-driven web platform designed for tech builders across Philippine universities to communicate, recruit hackathon teammates, share project showcases, and discover tech opportunities.",
+    category: "Web & Developer Tools",
+    status: "DEVELOPMENT",
+    repositoryUrl: "https://github.com/FerosC101/Nex-Platform",
+    demoUrl: "https://nex-network.vercel.app",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    createdAt: "2026-09-24T00:00:00Z",
+    updatedAt: "2026-10-01T08:00:00Z",
+    members: [
+      {
+        id: "mem-1",
+        projectId: "proj-1",
+        userId: "user-001",
+        user: {
+          id: "user-001",
+          name: "Georgie Villar",
+          username: "georgiedev",
+          school: "BatStateU",
+          course: "BSCS",
+        },
+        role: "Frontend Lead",
+        joinedAt: "2026-09-24T00:00:00Z",
+      },
+      {
+        id: "mem-2",
+        projectId: "proj-1",
+        userId: "user-lead",
+        user: {
+          id: "user-lead",
+          name: "Vince Anjo Villar",
+          username: "vincevillar",
+          school: "BatStateU",
+          course: "BSCS",
+        },
+        role: "Project Lead",
+        joinedAt: "2026-09-24T00:00:00Z",
+      },
+    ],
+    collaborationRequests: [
+      {
+        id: "collab-1",
+        creatorId: "user-001",
+        projectId: "proj-1",
+        title: "Seeking 1 UI/UX Designer & 1 Supabase Backend Developer",
+        description:
+          "We are polishing Phase 2 of the platform. Looking for a designer comfortable with Figma tokens and a backend developer with Supabase Auth & RLS experience.",
+        skillsRequired: ["Figma", "Supabase", "PostgreSQL", "Tailwind CSS"],
+        status: "OPEN",
+        createdAt: "2026-09-30T10:00:00Z",
+        applicationsCount: 3,
+      },
+    ],
+  },
+  {
+    id: "proj-2",
+    ownerId: "user-005",
+    owner: {
+      id: "user-005",
+      name: "David Christian Reyes",
+      username: "dreyes",
+      school: "PUP Manila",
+      course: "BS Computer Engineering",
+    },
+    name: "AgriSense — Low-cost Soil Telemetry Node",
+    description:
+      "IoT sensor array using ESP32 to monitor soil nitrogen, phosphorus, and moisture in real time, transmitting telemetry to a Next.js web dashboard.",
+    category: "Hardware & IoT",
+    status: "PROTOTYPE",
+    repositoryUrl: "https://github.com/example/agrisense-iot",
+    tags: ["ESP32", "C++", "Next.js", "FastAPI"],
+    createdAt: "2026-09-15T00:00:00Z",
+    updatedAt: "2026-09-30T16:00:00Z",
+    members: [
+      {
+        id: "mem-3",
+        projectId: "proj-2",
+        userId: "user-005",
+        user: {
+          id: "user-005",
+          name: "David Christian Reyes",
+          username: "dreyes",
+          school: "PUP Manila",
+          course: "BS Computer Engineering",
+        },
+        role: "Hardware & Firmware Lead",
+        joinedAt: "2026-09-15T00:00:00Z",
+      },
+    ],
+    collaborationRequests: [
+      {
+        id: "collab-2",
+        creatorId: "user-005",
+        projectId: "proj-2",
+        title: "Looking for Frontend Developer to build Sensor Charts",
+        description:
+          "Need a React/Next.js developer to integrate Recharts or Chart.js for real-time sensor graphs.",
+        skillsRequired: ["React", "Chart.js", "Tailwind CSS"],
+        status: "OPEN",
+        createdAt: "2026-09-28T09:00:00Z",
+        applicationsCount: 1,
+      },
+    ],
+  },
+  {
+    id: "proj-3",
+    ownerId: "user-003",
+    owner: {
+      id: "user-003",
+      name: "Chloe Santos",
+      username: "chloecode",
+      school: "De La Salle University",
+      course: "BS Computer Science",
+    },
+    name: "StudySync — University Peer Tutoring Hub",
+    description:
+      "Mobile-first web application connecting senior engineering students with underclassmen seeking tutorial sessions in Calculus, Algorithms, and Data Structures.",
+    category: "EdTech & Mobile",
+    status: "PLANNING",
+    repositoryUrl: "https://github.com/example/studysync-app",
+    tags: ["Flutter", "Dart", "Firebase"],
+    createdAt: "2026-09-20T00:00:00Z",
+    updatedAt: "2026-09-29T12:00:00Z",
+    members: [
+      {
+        id: "mem-4",
+        projectId: "proj-3",
+        userId: "user-003",
+        user: {
+          id: "user-003",
+          name: "Chloe Santos",
+          username: "chloecode",
+          school: "DLSU",
+          course: "BS CS",
+        },
+        role: "Lead Mobile Developer",
+        joinedAt: "2026-09-20T00:00:00Z",
+      },
+    ],
+    collaborationRequests: [
+      {
+        id: "collab-3",
+        creatorId: "user-003",
+        projectId: "proj-3",
+        title: "Need 1 Backend Developer (Node.js / Express)",
+        description:
+          "Looking for a backend collaborator to design the session booking REST API and database schemas.",
+        skillsRequired: ["Node.js", "Express", "PostgreSQL"],
+        status: "OPEN",
+        createdAt: "2026-09-29T10:00:00Z",
+        applicationsCount: 2,
+      },
+    ],
+  },
+  {
+    id: "proj-4",
+    ownerId: "user-002",
+    owner: {
+      id: "user-002",
+      name: "Marcus Aurelius Tan",
+      username: "marcustan",
+      school: "Batangas State University",
+      course: "BS Information Technology",
+    },
+    name: "CampusLogix — Smart Transit Tracker",
+    description:
+      "Automated campus shuttle and transport tracking system with estimated time of arrival (ETA) predictions for university commuters.",
+    category: "Smart Campus & Transportation",
+    status: "IDEA",
+    tags: ["Python", "FastAPI", "Docker", "PostgreSQL"],
+    createdAt: "2026-09-28T00:00:00Z",
+    updatedAt: "2026-10-01T06:00:00Z",
+    members: [
+      {
+        id: "mem-5",
+        projectId: "proj-4",
+        userId: "user-002",
+        user: {
+          id: "user-002",
+          name: "Marcus Aurelius Tan",
+          username: "marcustan",
+          school: "BatStateU",
+          course: "BSIT",
+        },
+        role: "Project Initiator",
+        joinedAt: "2026-09-28T00:00:00Z",
+      },
+    ],
+    collaborationRequests: [
+      {
+        id: "collab-4",
+        creatorId: "user-002",
+        projectId: "proj-4",
+        title: "PacketHacks 2026 Team: Need 1 Mobile Dev & 1 Backend Dev",
+        description:
+          "Forming a student team for PacketHacks 2026. Looking for builders enthusiastic about GPS telemetry and mapping.",
+        skillsRequired: ["Python", "Flutter", "Leaflet / Maps"],
+        status: "OPEN",
+        createdAt: "2026-09-29T14:30:00Z",
+        applicationsCount: 4,
+      },
+    ],
   },
 ];

@@ -59,3 +59,63 @@ export interface Post {
   tags: string[];
   comments?: Comment[];
 }
+
+// ==========================================
+// Phase 2: Project & Collaboration Entities
+// ==========================================
+
+export type ProjectStatus =
+  | "IDEA"
+  | "PLANNING"
+  | "PROTOTYPE"
+  | "DEVELOPMENT"
+  | "COMPLETED"
+  | "ARCHIVED";
+
+export interface ProjectMember {
+  id: string;
+  projectId: string;
+  userId: string;
+  user: PostAuthor;
+  role: string;
+  joinedAt: string;
+}
+
+export interface CollaborationRequest {
+  id: string;
+  creatorId: string;
+  projectId: string;
+  title: string;
+  description: string;
+  skillsRequired: string[];
+  status: "OPEN" | "FILLED" | "CLOSED";
+  createdAt: string;
+  applicationsCount: number;
+}
+
+export interface CollaborationApplication {
+  id: string;
+  requestId: string;
+  applicantId: string;
+  applicant: PostAuthor;
+  message: string;
+  status: "PENDING" | "ACCEPTED" | "REJECTED";
+  createdAt: string;
+}
+
+export interface Project {
+  id: string;
+  ownerId: string;
+  owner: PostAuthor;
+  name: string;
+  description: string;
+  category: string;
+  status: ProjectStatus;
+  repositoryUrl?: string;
+  demoUrl?: string;
+  tags: string[];
+  createdAt: string;
+  updatedAt: string;
+  members: ProjectMember[];
+  collaborationRequests?: CollaborationRequest[];
+}
