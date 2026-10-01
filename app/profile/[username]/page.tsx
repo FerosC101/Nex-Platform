@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar } from "@/components/ui/avatar";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { currentUserProfile, initialPosts } from "@/lib/mock-data";
+import { currentUserProfile, initialPosts, initialProjects } from "@/lib/mock-data";
+import { ProjectStatus } from "@/lib/types";
 import {
   School,
   GraduationCap,
@@ -20,6 +21,9 @@ import {
   FolderGit2,
   ExternalLink,
   Code2,
+  Users,
+  Plus,
+  GitBranch,
 } from "lucide-react";
 
 export default function StudentProfilePage() {
@@ -33,6 +37,27 @@ export default function StudentProfilePage() {
   const userPosts = initialPosts.filter(
     (p) => !p.isAnonymous && p.author.username === profile.username
   );
+
+  // Filter projects by this user (either owner or member)
+  const userProjects = initialProjects.filter(
+    (p) => p.ownerId === profile.userId || p.members.some((m) => m.userId === profile.userId)
+  );
+
+  const getStatusBadgeVariant = (status: ProjectStatus) => {
+    switch (status) {
+      case "DEVELOPMENT":
+        return "default";
+      case "PROTOTYPE":
+        return "secondary";
+      case "COMPLETED":
+        return "success";
+      case "PLANNING":
+      case "IDEA":
+        return "warning";
+      default:
+        return "outline";
+    }
+  };
 
   return (
     <AppShell>
@@ -245,22 +270,98 @@ export default function StudentProfilePage() {
             </Card>
           </TabsContent>
 
-          {/* Projects Tab Content (Previewing Phase 2) */}
-          <TabsContent value="projects" className="pt-4">
-            <Card className="bg-card/70 border-border/80 p-8 text-center space-y-3">
-              <FolderGit2 className="size-10 text-primary mx-auto opacity-70" />
-              <h3 className="font-bold text-foreground text-base">
-                Student Projects Directory Integration
-              </h3>
-              <p className="text-xs text-muted-foreground max-w-md mx-auto">
-                Project showcase submission will connect here in Phase 2. You will be able to display your GitHub repositories, live demo links, and recruit teammates.
-              </p>
-              <Link href="/community">
-                <Button size="sm" variant="outline" className="mt-2">
-                  Share a Project in Community
-                </Button>
-              </Link>
-            </Card>
+          {/* Projects Tab Content */}
+          <TabsContent value="projects" className="space-y-4 pt-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono text-muted-foreground">
+                Showing {userProjects.length} project{userProjects.length === 1 ? "" : "s"}
+              </span>
+              {isOwnProfile && (
+                <Link href="/projects/new">
+                  <Button size="sm" className="font-semibold text-xs h-8">
+                    <Plus className="size-3.5 mr-1" /> New Project
+                  </Button>
+                </Link>
+              )}
+            </div>
+
+            {userProjects.length === 0 ? (
+              <Card className="bg-card/70 border-dashed border-border/80 p-8 text-center space-y-3">
+                <FolderGit2 className="size-10 text-muted-foreground mx-auto opacity-50" />
+                <h3 className="font-bold text-foreground text-sm">
+                  No projects published yet
+                </h3>
+                <p className="text-xs text-muted-foreground max-w-sm mx-auto">
+                  Showcase your university prototypes, hackathon submissions, and open-source repos here.
+                </p>
+                {isOwnProfile && (
+                  <Link href="/projects/new">
+                    <Button size="sm" variant="outline" className="mt-2 font-semibold">
+                      <Plus className="size-3.5 mr-1.5" /> Register a Project
+                    </Button>
+                  </Link>
+                )}
+              </Card>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {userProjects.map((project) => (
+                  <Card
+                    key={project.id}
+                    className="bg-card/70 border-border/80 hover:border-primary/40 transition-colors flex flex-col justify-between"
+                  >
+                    <CardContent className="p-5 space-y-3">
+                      <div className="flex items-start justify-between gap-2">
+                        <Badge
+                          variant={getStatusBadgeVariant(project.status)}
+                          className="text-[10px] font-mono tracking-wider uppercase"
+                        >
+                          {project.status}
+                        </Badge>
+                        <span className="text-[11px] text-muted-foreground font-mono">
+                          {project.category}
+                        </span>
+                      </div>
+
+                      <div>
+                        <Link
+                          href={`/projects/${project.id}`}
+                          className="font-bold text-base text-foreground hover:text-primary transition-colors block"
+                        >
+                          {project.name}
+                        </Link>
+                        <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {project.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[10px] font-mono bg-secondary/80 text-secondary-foreground px-2 py-0.5 rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center justify-between text-xs text-muted-foreground pt-3 border-t border-border/40">
+                        <span className="flex items-center gap-1.5 font-mono text-[11px]">
+                          <Users className="size-3.5 text-primary" />
+                          {project.members.length} member{project.members.length === 1 ? "" : "s"}
+                        </span>
+                        <Link
+                          href={`/projects/${project.id}`}
+                          className="text-primary hover:underline font-medium inline-flex items-center gap-1 text-xs"
+                        >
+                          View Project <ExternalLink className="size-3" />
+                        </Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
           </TabsContent>
         </Tabs>
       </div>
