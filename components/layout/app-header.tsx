@@ -6,8 +6,8 @@ import { NexLogo } from "@/components/ui/nex-logo";
 import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
 import { currentUserProfile } from "@/lib/mock-data";
+import { NotificationPopover } from "./notification-popover";
 import {
-  Bell,
   Search,
   Plus,
   MessageSquare,
@@ -78,15 +78,8 @@ export function AppHeader() {
             </Button>
           </Link>
 
-          {/* Notification Bell */}
-          <button
-            type="button"
-            className="relative p-2 rounded-lg border border-border bg-card/40 text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-colors cursor-pointer"
-            aria-label="Notifications"
-          >
-            <Bell className="size-4" />
-            <span className="absolute top-1.5 right-1.5 size-2 rounded-full bg-primary ring-2 ring-background" />
-          </button>
+          {/* Interactive Notifications System */}
+          <NotificationPopover />
 
           {/* User Profile Avatar */}
           <Link
