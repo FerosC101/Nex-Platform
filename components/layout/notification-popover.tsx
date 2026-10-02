@@ -128,7 +128,7 @@ export function NotificationPopover() {
           </div>
 
           {/* Notifications List */}
-          <div className="max-h-96 overflow-y-auto divide-y divide-border/40">
+          <div className="max-h-96 overflow-y-auto divide-y divide-border/40 custom-scrollbar">
             {notifications.length === 0 ? (
               <div className="p-8 text-center text-xs text-muted-foreground">
                 No notifications right now.

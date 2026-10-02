@@ -158,12 +158,14 @@ export function GlobalSearchDialog() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border/80 bg-card/60 text-xs text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors cursor-pointer"
+        className="hidden sm:flex items-center justify-between gap-2 h-8 px-2.5 w-36 md:w-44 lg:w-52 rounded-lg border border-border/80 bg-card/60 text-xs text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors cursor-pointer shrink-0"
         aria-label="Open global search (Ctrl+F)"
       >
-        <Search className="size-3.5" />
-        <span>Search discussions, projects, grants...</span>
-        <kbd className="px-1.5 py-0.5 rounded bg-muted text-[10px] font-mono border border-border text-foreground font-semibold">
+        <div className="flex items-center gap-1.5 min-w-0">
+          <Search className="size-3.5 shrink-0 text-muted-foreground" />
+          <span className="truncate whitespace-nowrap text-xs">Search...</span>
+        </div>
+        <kbd className="shrink-0 px-1 py-0.2 rounded bg-secondary text-[10px] font-mono border border-border text-muted-foreground font-semibold">
           Ctrl+F
         </kbd>
       </button>
@@ -221,7 +223,7 @@ export function GlobalSearchDialog() {
             </div>
 
             {/* Search Results List */}
-            <div className="max-h-96 overflow-y-auto divide-y divide-border/40 p-1">
+            <div className="max-h-96 overflow-y-auto divide-y divide-border/40 p-1 custom-scrollbar">
               {!query.trim() ? (
                 <div className="p-8 text-center space-y-2">
                   <Sparkles className="size-6 text-primary mx-auto opacity-70" />
