@@ -33,14 +33,14 @@ export function AppHeader() {
 
   return (
     <header className="border-b border-border/80 sticky top-0 z-50 bg-background/90 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-        {/* Logo & Navigation */}
-        <div className="flex items-center gap-4 lg:gap-6 min-w-0">
+      <div className="w-full px-4 sm:px-8 lg:px-10 h-16 flex items-center justify-between gap-6">
+        {/* Logo & Navigation (Anchored Left with clean breathing room) */}
+        <div className="flex items-center gap-6 lg:gap-8 shrink-0">
           <Link href="/dashboard" className="shrink-0">
-            <NexLogo size={24} />
+            <NexLogo size={26} />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-0.5 lg:gap-1 text-xs lg:text-sm font-medium">
+          <nav className="hidden md:flex items-center gap-1.5 lg:gap-2 text-sm font-medium">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname.startsWith(link.href);
@@ -48,13 +48,13 @@ export function AppHeader() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
                     isActive
                       ? "text-primary font-semibold bg-primary/10"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
                   }`}
                 >
-                  <Icon className="size-3.5 lg:size-4" />
+                  <Icon className="size-4" />
                   {link.label}
                 </Link>
               );
@@ -62,18 +62,10 @@ export function AppHeader() {
           </nav>
         </div>
 
-        {/* Right Actions */}
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        {/* Right Actions (Anchored Right with dedicated space) */}
+        <div className="flex items-center gap-3 shrink-0">
           {/* Global In-App Search (Ctrl+F) */}
           <GlobalSearchDialog />
-
-          {/* Quick Create Post */}
-          <Link href="/community" className="hidden xl:inline-flex">
-            <Button size="sm" className="h-8 px-2.5 text-xs font-semibold gap-1">
-              <Plus className="size-3.5" />
-              New Post
-            </Button>
-          </Link>
 
           {/* Interactive Notifications System */}
           <NotificationPopover />
