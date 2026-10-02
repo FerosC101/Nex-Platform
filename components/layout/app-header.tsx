@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
 import { currentUserProfile } from "@/lib/mock-data";
 import { NotificationPopover } from "./notification-popover";
+import { GlobalSearchDialog } from "./global-search-dialog";
 import {
   Search,
   Plus,
@@ -15,6 +16,7 @@ import {
   FolderGit2,
   Compass,
   Calendar,
+  FlaskConical,
 } from "lucide-react";
 
 export function AppHeader() {
@@ -26,6 +28,7 @@ export function AppHeader() {
     { href: "/projects", label: "Projects", icon: FolderGit2 },
     { href: "/opportunities", label: "Opportunities", icon: Compass },
     { href: "/events", label: "Events", icon: Calendar },
+    { href: "/testers", label: "Testers", icon: FlaskConical },
   ];
 
   return (
@@ -61,14 +64,8 @@ export function AppHeader() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
-          {/* Quick Search Bar */}
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-card/60 text-xs text-muted-foreground">
-            <Search className="size-3.5" />
-            <span>Search discussions, projects...</span>
-            <kbd className="px-1.5 py-0.5 rounded bg-muted text-[10px] font-mono border border-border">
-              Ctrl+K
-            </kbd>
-          </div>
+          {/* Global In-App Search (Ctrl+F) */}
+          <GlobalSearchDialog />
 
           {/* Quick Create Post */}
           <Link href="/community">
