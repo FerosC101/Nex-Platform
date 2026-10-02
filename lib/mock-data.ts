@@ -6,6 +6,9 @@ import {
   Opportunity,
   TechEvent,
   AppNotification,
+  TesterRequest,
+  TesterSignup,
+  ModerationReport,
 } from "./types";
 
 export const currentUserProfile: StudentProfile = {
@@ -710,4 +713,143 @@ export const initialNotifications: AppNotification[] = [
     createdAt: "2026-09-30T19:00:00Z",
   },
 ];
+
+// ==========================================
+// Phase 4: Tester System Dataset (Section 13)
+// ==========================================
+
+export const initialTesterRequests: TesterRequest[] = [
+  {
+    id: "test-req-1",
+    projectId: "proj-2",
+    projectName: "AgriSense IoT — Low-cost Soil Telemetry",
+    creatorId: "user-005",
+    creator: {
+      id: "user-005",
+      name: "David Christian Reyes",
+      username: "dreyes",
+      school: "PUP Manila",
+      course: "BS Computer Engineering",
+    },
+    title: "Need 5 students to test ESP32 sensor dashboard & telemetry streaming",
+    description:
+      "We deployed our soil sensor dashboard on Vercel and need testers to check mobile viewport responsiveness, simulated reading latency, and chart refreshes.",
+    numberNeeded: 5,
+    estimatedTime: "10-15 mins",
+    deadline: "2026-10-15T23:59:59Z",
+    status: "OPEN",
+    signupsCount: 3,
+    testUrl: "https://agrisense-test.vercel.app",
+    createdAt: "2026-10-01T12:00:00Z",
+  },
+  {
+    id: "test-req-2",
+    projectId: "proj-4",
+    projectName: "CampusLogix — Smart Transit Tracker",
+    creatorId: "user-002",
+    creator: {
+      id: "user-002",
+      name: "Marcus Aurelius Tan",
+      username: "marcustan",
+      school: "BatStateU",
+      course: "BSIT",
+    },
+    title: "Beta testing campus shuttle ETA predictions and route map pins",
+    description:
+      "Seeking 10 university student commuters to test whether our GPS telemetry ETA estimations accurately match real route walking and shuttle transit times.",
+    numberNeeded: 10,
+    estimatedTime: "15-20 mins",
+    deadline: "2026-10-20T23:59:59Z",
+    status: "OPEN",
+    signupsCount: 6,
+    testUrl: "https://campuslogix-demo.vercel.app",
+    createdAt: "2026-10-01T14:30:00Z",
+  },
+  {
+    id: "test-req-3",
+    projectId: "proj-1",
+    projectName: "Nex Community Platform",
+    creatorId: "user-001",
+    creator: {
+      id: "user-001",
+      name: "Georgie Villar",
+      username: "georgiedev",
+      school: "BatStateU - TNEU",
+      course: "BSCS",
+    },
+    title: "UX walkthrough for Opportunities, Events RSVP, and Global Search",
+    description:
+      "Need 8 peer student builders to test bookmarking hackathons, event RSVP state persistence, responsive drawer modals, and Ctrl+F global search.",
+    numberNeeded: 8,
+    estimatedTime: "10 mins",
+    deadline: "2026-10-25T23:59:59Z",
+    status: "OPEN",
+    signupsCount: 5,
+    testUrl: "https://nex-network.vercel.app",
+    createdAt: "2026-10-02T08:00:00Z",
+  },
+];
+
+export const initialTesterSignups: TesterSignup[] = [
+  {
+    id: "signup-1",
+    testerRequestId: "test-req-1",
+    userId: "user-001",
+    user: {
+      id: "user-001",
+      name: "Georgie Villar",
+      username: "georgiedev",
+      school: "BatStateU",
+      course: "BSCS",
+    },
+    status: "ACCEPTED",
+    feedback: "Dashboard telemetry graphs look crisp on iOS Safari. Suggest adding a retry button for slow socket reconnections.",
+    createdAt: "2026-10-01T16:00:00Z",
+  },
+];
+
+// ==========================================
+// Phase 4: Moderation System Dataset (Section 21)
+// ==========================================
+
+export const initialModerationReports: ModerationReport[] = [
+  {
+    id: "rep-1",
+    reporterId: "user-002",
+    reporterName: "Marcus Aurelius Tan",
+    targetType: "POST",
+    targetId: "post-spam-01",
+    targetTitle: "Free Crypto Airdrop & Telegram Investment Link",
+    reason: "SCAM",
+    description: "External suspicious link promising cryptocurrency returns targeting university freshmen.",
+    status: "PENDING",
+    createdAt: "2026-10-02T08:30:00Z",
+  },
+  {
+    id: "rep-2",
+    reporterId: "user-006",
+    reporterName: "Bea Patricia Cruz",
+    targetType: "COMMENT",
+    targetId: "comm-flag-02",
+    targetTitle: "Thread Reply under BatStateU CS Curriculum discussion",
+    reason: "HARASSMENT",
+    description: "Derogatory personal insults against student project contributors.",
+    status: "PENDING",
+    createdAt: "2026-10-02T07:15:00Z",
+  },
+  {
+    id: "rep-3",
+    reporterId: "user-005",
+    reporterName: "David Christian Reyes",
+    targetType: "PROJECT",
+    targetId: "proj-fake-03",
+    targetTitle: "Plagiarized Thesis Repository Clone",
+    reason: "MISLEADING_CONTENT",
+    description: "Exact clone of an existing 2024 university repository without attribution.",
+    status: "REVIEWED",
+    reviewedBy: "Admin Moderator",
+    createdAt: "2026-10-01T16:00:00Z",
+  },
+];
+
 

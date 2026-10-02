@@ -209,3 +209,63 @@ export interface AppNotification {
   createdAt: string;
 }
 
+// ==========================================
+// Phase 4: Tester System & Moderation System
+// ==========================================
+
+export interface TesterRequest {
+  id: string;
+  projectId: string;
+  projectName: string;
+  creatorId: string;
+  creator: PostAuthor;
+  title: string;
+  description: string;
+  numberNeeded: number;
+  estimatedTime: string; // e.g. "15 mins"
+  deadline: string;
+  status: "OPEN" | "FILLED" | "COMPLETED";
+  signupsCount: number;
+  testUrl?: string;
+  createdAt: string;
+}
+
+export interface TesterSignup {
+  id: string;
+  testerRequestId: string;
+  userId: string;
+  user: PostAuthor;
+  status: "PENDING" | "ACCEPTED" | "COMPLETED";
+  feedback?: string;
+  createdAt: string;
+}
+
+export type ReportReason =
+  | "SPAM"
+  | "HARASSMENT"
+  | "SCAM"
+  | "INAPPROPRIATE_CONTENT"
+  | "MISLEADING_CONTENT"
+  | "OTHER";
+
+export type ReportStatus =
+  | "PENDING"
+  | "REVIEWED"
+  | "DISMISSED"
+  | "ACTION_TAKEN";
+
+export interface ModerationReport {
+  id: string;
+  reporterId: string;
+  reporterName: string;
+  targetType: "POST" | "COMMENT" | "PROJECT" | "USER";
+  targetId: string;
+  targetTitle: string;
+  reason: ReportReason;
+  description: string;
+  status: ReportStatus;
+  reviewedBy?: string;
+  createdAt: string;
+}
+
+
