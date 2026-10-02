@@ -1,4 +1,12 @@
-import { Post, StudentProfile, Project, CollaborationRequest } from "./types";
+import {
+  Post,
+  StudentProfile,
+  Project,
+  CollaborationRequest,
+  Opportunity,
+  TechEvent,
+  AppNotification,
+} from "./types";
 
 export const currentUserProfile: StudentProfile = {
   id: "prof-001",
@@ -422,3 +430,284 @@ export const initialProjects: Project[] = [
     ],
   },
 ];
+
+// ==========================================
+// Phase 3: Opportunities Dataset
+// ==========================================
+
+export const initialOpportunities: Opportunity[] = [
+  {
+    id: "opp-1",
+    title: "DOST-SEI Student Innovation Challenge 2026",
+    organization: "Department of Science and Technology (DOST-SEI)",
+    type: "GRANT",
+    description:
+      "National innovation grant awarded to undergraduate engineering and computer science students developing working hardware or software prototypes that address sustainable community development.",
+    locationType: "HYBRID",
+    location: "Metro Manila / Nationwide",
+    deadline: "2026-10-25T23:59:59Z",
+    eligibility: "Enrolled Undergraduate Students (Teams of 3-5)",
+    applicationUrl: "https://www.sei.dost.gov.ph",
+    reward: "₱100,000 Prototype Seed Grant",
+    tags: ["Grant", "DOST", "Government", "Hardware/IoT", "Sustainability"],
+    createdAt: "2026-09-15T08:00:00Z",
+    featured: true,
+  },
+  {
+    id: "opp-2",
+    title: "NASA Space Apps Challenge 2026 — Manila Edition",
+    organization: "NASA Space Apps Manila",
+    type: "HACKATHON",
+    description:
+      "Global hackathon inviting student coders, scientists, and designers to solve real-world problems on Earth and in space using NASA's open-source datasets.",
+    locationType: "HYBRID",
+    location: "DLSU Manila & Virtual",
+    deadline: "2026-10-18T18:00:00Z",
+    eligibility: "Open to All College & High School Students",
+    applicationUrl: "https://www.spaceappschallenge.org",
+    reward: "₱150,000 Prize Pool + Global Judging Nomination",
+    tags: ["Hackathon", "Data Science", "SpaceTech", "Global"],
+    createdAt: "2026-09-20T10:00:00Z",
+    featured: true,
+  },
+  {
+    id: "opp-3",
+    title: "Google Solution Challenge Philippines 2026",
+    organization: "Google Developer Student Clubs (GDSC)",
+    type: "COMPETITION",
+    description:
+      "Annual competition for university students to build solutions for one or more of the United Nations 17 Sustainable Development Goals using Google technologies.",
+    locationType: "ONLINE",
+    location: "Virtual",
+    deadline: "2026-11-15T23:59:59Z",
+    eligibility: "Active GDSC Members & University Students",
+    applicationUrl: "https://developers.google.com/community/gdsc-solution-challenge",
+    reward: "$10,000 USD Grant + Google Engineers Mentorship",
+    tags: ["Google", "AI", "Cloud", "SDG", "International"],
+    createdAt: "2026-09-22T09:00:00Z",
+    featured: true,
+  },
+  {
+    id: "opp-4",
+    title: "GCash NextGen Software Engineering Intern (2026 Cohort)",
+    organization: "Mynt (Globe Fintech Innovations)",
+    type: "INTERNSHIP",
+    description:
+      "6-month paid internship program for 3rd and 4th-year tech students. Work directly alongside production squads building high-concurrency microservices, payment gateways, and security pipelines.",
+    locationType: "HYBRID",
+    location: "BGC, Taguig City (2 Days Onsite / 3 Days Remote)",
+    deadline: "2026-10-31T17:00:00Z",
+    eligibility: "3rd & 4th Year BS CS, IT, ECE Students",
+    applicationUrl: "https://www.gcash.com/careers",
+    reward: "Paid Internship + Pre-Placement Job Offer (PPO)",
+    tags: ["Fintech", "Next.js", "Java", "Kubernetes", "Paid"],
+    createdAt: "2026-09-25T11:00:00Z",
+  },
+  {
+    id: "opp-5",
+    title: "DevCon Student Tech Fellowship — Batch 5",
+    organization: "DevCon Philippines Foundation",
+    type: "FELLOWSHIP",
+    description:
+      "Intensive 10-week accelerated fellowship pairing promising student developers with Silicon Valley and Southeast Asia engineering leads for hands-on open-source architecture.",
+    locationType: "ONLINE",
+    location: "Virtual / Discord & GitHub",
+    deadline: "2026-11-05T23:59:59Z",
+    eligibility: "Filipino Tech Students with at least 1 public GitHub repo",
+    applicationUrl: "https://devcon.ph/fellowship",
+    reward: "₱30,000 Learning Grant + 1-on-1 Mentorship",
+    tags: ["Open Source", "Mentorship", "Fellowship", "Career"],
+    createdAt: "2026-09-27T13:00:00Z",
+  },
+  {
+    id: "opp-6",
+    title: "Accenture Philippines Student Innovation Hackfest",
+    organization: "Accenture Philippines",
+    type: "HACKATHON",
+    description:
+      "48-hour collaborative hackathon focused on Enterprise Generative AI, Cloud Resilience, and Cybersecurity prototypes for university builders.",
+    locationType: "ONSITE",
+    location: "Accenture Innovation Hub, Makati City",
+    deadline: "2026-10-22T20:00:00Z",
+    eligibility: "Collegiate Teams of 2 to 4 Students",
+    applicationUrl: "https://www.accenture.com/ph-en/careers",
+    reward: "₱80,000 Cash Prize + Fast-Track Associate Interviews",
+    tags: ["AI", "Enterprise", "Hackathon", "Networking"],
+    createdAt: "2026-09-28T15:30:00Z",
+  },
+];
+
+// ==========================================
+// Phase 3: Events Dataset
+// ==========================================
+
+export const initialEvents: TechEvent[] = [
+  {
+    id: "evt-1",
+    title: "Building Scalable Full-Stack Apps with Next.js 15 & Supabase",
+    description:
+      "A deep dive workshop covering Server Actions, Turbopack, Row-Level Security (RLS), and database webhooks tailored for student builders building hackathon MVPs.",
+    type: "WORKSHOP",
+    date: "2026-10-10",
+    startTime: "14:00",
+    endTime: "17:00",
+    locationType: "ONLINE",
+    location: "Zoom Video Conference & Discord Stream",
+    organizer: "Nex Engineering Guild",
+    speaker: {
+      name: "Sophia Dela Cruz",
+      role: "Staff Engineer & Community Contributor",
+      organization: "Vercel Ecosystem / BatStateU Alum",
+    },
+    capacity: 150,
+    registeredCount: 118,
+    tags: ["Next.js", "Supabase", "TypeScript", "Architecture"],
+    bannerGradient: "from-cyan-900/60 via-card to-background",
+    agenda: [
+      { time: "14:00 - 14:20", title: "Keynote: Architectural Evolution of Next.js App Router" },
+      { time: "14:20 - 15:30", title: "Hands-on Lab: Server Components & Supabase RLS in Practice" },
+      { time: "15:30 - 16:30", title: "Live Build: Real-time Collaboration Engine with PostgreSQL Webhooks" },
+      { time: "16:30 - 17:00", title: "Q&A and Student Code Review Session" },
+    ],
+  },
+  {
+    id: "evt-2",
+    title: "DOST-SEI Innovation Challenge 2026: Official Pitch & Guidelines Kickoff",
+    description:
+      "Exclusive briefing and proposal writing orientation for student teams aiming for the ₱100,000 grant. Learn directly from regional technical evaluators.",
+    type: "HACKATHON_KICKOFF",
+    date: "2026-10-14",
+    startTime: "10:00",
+    endTime: "12:00",
+    locationType: "HYBRID",
+    location: "BatStateU Main Campus Auditorium & YouTube Live",
+    organizer: "DOST Region IV-A & Nex Network",
+    speaker: {
+      name: "Engr. Ronald Morales",
+      role: "Senior Science Research Specialist",
+      organization: "DOST-SEI",
+    },
+    capacity: 200,
+    registeredCount: 174,
+    tags: ["DOST", "Grants", "Pitching", "Guidelines"],
+    bannerGradient: "from-amber-900/50 via-card to-background",
+    agenda: [
+      { time: "10:00 - 10:30", title: "Opening Remarks: 2026 Grant Scope & Priorities" },
+      { time: "10:30 - 11:15", title: "Evaluating Rubrics: From Idea to Working Hardware Prototype" },
+      { time: "11:15 - 12:00", title: "Open Consultation for Student Major Projects & Theses" },
+    ],
+  },
+  {
+    id: "evt-3",
+    title: "Low-Power IoT Prototyping: ESP32, MQTT & Real-time Webhooks",
+    description:
+      "Hands-on sensor telemetry workshop. Connect analog temperature and optical sensors to microcontroller boards and stream readings to web dashboards.",
+    type: "WORKSHOP",
+    date: "2026-10-20",
+    startTime: "13:00",
+    endTime: "16:30",
+    locationType: "ONSITE",
+    location: "MakerLab Room 402, BatStateU Alangilan Campus",
+    organizer: "Nex Hardware Guild",
+    speaker: {
+      name: "David Christian Reyes",
+      role: "Hardware & Embedded Systems Lead",
+      organization: "AgriSense IoT / PUP Manila",
+    },
+    capacity: 40,
+    registeredCount: 35,
+    tags: ["IoT", "ESP32", "Hardware", "MQTT"],
+    bannerGradient: "from-emerald-900/50 via-card to-background",
+    agenda: [
+      { time: "13:00 - 13:45", title: "Microcontroller Setup & Flashing MicroPython / C++" },
+      { time: "13:45 - 15:15", title: "Interfacing Soil & Temperature Sensors with MQTT Broker" },
+      { time: "15:15 - 16:30", title: "Dashboard Integration: Ingesting Telemetry into Next.js" },
+    ],
+  },
+  {
+    id: "evt-4",
+    title: "Nex Builder Meetup: University Showcases & Lightning Talks",
+    description:
+      "Casual student demo night. 5 student startup teams will deliver 5-minute rapid demos of their live prototypes followed by networking and pizza.",
+    type: "CAMPUS_MEETUP",
+    date: "2026-10-28",
+    startTime: "15:00",
+    endTime: "19:00",
+    locationType: "ONSITE",
+    location: "Innovation Center Ground Floor, BatStateU Pablo Borbon",
+    organizer: "Nex Community Platform",
+    speaker: {
+      name: "Georgie Villar & Student Creators",
+      role: "Core Builders",
+      organization: "Nex Network",
+    },
+    capacity: 80,
+    registeredCount: 64,
+    tags: ["Networking", "DemoNight", "Showcase", "Community"],
+    bannerGradient: "from-purple-900/50 via-card to-background",
+    agenda: [
+      { time: "15:00 - 15:30", title: "Check-in, Badges & Welcoming" },
+      { time: "15:30 - 17:00", title: "5 x 10-Minute University Project Demos" },
+      { time: "17:00 - 17:45", title: "Builder Panel: Navigating Hackathons as Undergrads" },
+      { time: "17:45 - 19:00", title: "Open Teammate Networking & Prototype Testing" },
+    ],
+  },
+];
+
+// ==========================================
+// Phase 3: Notifications Dataset
+// ==========================================
+
+export const initialNotifications: AppNotification[] = [
+  {
+    id: "notif-1",
+    userId: "user-001",
+    type: "COLLABORATION_REQUEST",
+    title: "New Collaborator Application",
+    message: "Marcus Aurelius Tan applied to join 'Nex Community Platform' as Full-stack Contributor.",
+    link: "/projects/proj-1",
+    isRead: false,
+    createdAt: "2026-10-02T09:45:00Z",
+  },
+  {
+    id: "notif-2",
+    userId: "user-001",
+    type: "COMMENT_REPLY",
+    title: "New Reply on Your Post",
+    message: "Bea Patricia Cruz replied: 'Consider aggregating in an edge worker before inserting.'",
+    link: "/community/post-1",
+    isRead: false,
+    createdAt: "2026-10-02T08:15:00Z",
+  },
+  {
+    id: "notif-3",
+    userId: "user-001",
+    type: "OPPORTUNITY_DEADLINE",
+    title: "Opportunity Deadline Approaching",
+    message: "NASA Space Apps Challenge Manila registration closes in 6 days (Oct 18).",
+    link: "/opportunities",
+    isRead: false,
+    createdAt: "2026-10-02T05:30:00Z",
+  },
+  {
+    id: "notif-4",
+    userId: "user-001",
+    type: "EVENT_REMINDER",
+    title: "Registered Event Reminder",
+    message: "Upcoming: 'Building Scalable Full-Stack Apps with Next.js 15 & Supabase' starts on Oct 10.",
+    link: "/events/evt-1",
+    isRead: true,
+    createdAt: "2026-10-01T14:00:00Z",
+  },
+  {
+    id: "notif-5",
+    userId: "user-001",
+    type: "UPVOTE_MILESTONE",
+    title: "Trending Post Milestone",
+    message: "Your prototype showcase 'Nex Community Platform' reached 30+ student upvotes!",
+    link: "/community/post-3",
+    isRead: true,
+    createdAt: "2026-09-30T19:00:00Z",
+  },
+];
+

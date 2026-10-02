@@ -119,3 +119,93 @@ export interface Project {
   members: ProjectMember[];
   collaborationRequests?: CollaborationRequest[];
 }
+
+// ==========================================
+// Phase 3: Opportunities, Events & Notifications
+// ==========================================
+
+export type OpportunityType =
+  | "HACKATHON"
+  | "INTERNSHIP"
+  | "GRANT"
+  | "SCHOLARSHIP"
+  | "FELLOWSHIP"
+  | "COMPETITION";
+
+export type LocationType = "ONLINE" | "ONSITE" | "HYBRID";
+
+export interface Opportunity {
+  id: string;
+  title: string;
+  organization: string;
+  organizationLogo?: string;
+  type: OpportunityType;
+  description: string;
+  locationType: LocationType;
+  location: string;
+  deadline: string; // ISO date string
+  eligibility: string;
+  applicationUrl: string;
+  reward: string; // e.g. "₱150,000 Prize Pool", "₱20,000 / mo + Mentorship"
+  tags: string[];
+  createdAt: string;
+  featured?: boolean;
+}
+
+export type EventType =
+  | "WORKSHOP"
+  | "WEBINAR"
+  | "HACKATHON_KICKOFF"
+  | "CAMPUS_MEETUP"
+  | "TECH_CONFERENCE";
+
+export interface EventAgendaItem {
+  time: string;
+  title: string;
+  description?: string;
+}
+
+export interface TechEvent {
+  id: string;
+  title: string;
+  description: string;
+  type: EventType;
+  date: string; // ISO date string
+  startTime: string;
+  endTime: string;
+  locationType: LocationType;
+  location: string;
+  organizer: string;
+  speaker: {
+    name: string;
+    role: string;
+    organization: string;
+    avatar?: string;
+  };
+  capacity: number;
+  registeredCount: number;
+  agenda: EventAgendaItem[];
+  tags: string[];
+  meetingLink?: string;
+  bannerGradient: string;
+}
+
+export type NotificationType =
+  | "COLLABORATION_REQUEST"
+  | "APPLICATION_STATUS"
+  | "COMMENT_REPLY"
+  | "UPVOTE_MILESTONE"
+  | "OPPORTUNITY_DEADLINE"
+  | "EVENT_REMINDER";
+
+export interface AppNotification {
+  id: string;
+  userId: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  link: string;
+  isRead: boolean;
+  createdAt: string;
+}
+
