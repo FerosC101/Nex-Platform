@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --background: #1b1a1f;
+  --foreground: #ffffff;
+  --card: #232228;
+  --card-foreground: #ffffff;
+  --popover: #232228;
+  --popover-foreground: #ffffff;
+  --primary: #5cd6d7;
+  --primary-foreground: #1b1a1f;
+  --secondary: #2b2a33;
+  --secondary-foreground: #ffffff;
+  --muted: #27262f;
+  --muted-foreground: #94a3b8;
+  --accent: #5cd6d7;
+  --accent-foreground: #1b1a1f;
+  --destructive: #f43f5e;
+  --destructive-foreground: #ffffff;
+  --border: #2e2d36;
+  --input: #2e2d36;
+  --ring: #5cd6d7;
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-heading: var(--font-poppins), system-ui, sans-serif;
+  --font-grotesk: var(--font-grotesk), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+/* Base typography styling */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Custom dark scrollbar matching obsidian charcoal theme */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #383642 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #383642;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #5cd6d7;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #383642 transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #383642;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #5cd6d7;
+}
